@@ -10,5 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Curl your Render server
-        run: curl --max-time 20 --connect-timeout 10 -s https://event-management-system-li2e.onrender.com > /dev/null
+      - name: Ping multiple URLs with timeout and retry
+        run: |
+          URLs=(
+            "https://removeit-backend.onrender.com"
+            "https://event-management-system-li2e.onrender.com"
+            "https://genius-lyrics-scrapper.onrender.com"
+            "https://gritchat.onrender.com"
+            "https://gritquiz.onrender.com"
+            "https://meroshop.onrender.com"
+          )
+
+          for url in "${URLs[@]}"; do
+            echo "Pinging $url"
+            for i in {1..2}; do
+              curl --max-time 20 --connect-timeout 10 -s "$url" > /dev/null && break
+              echo "Retry $i failed for $url... sleeping 5 seconds"
+              sleep 5
+            done
+          done
