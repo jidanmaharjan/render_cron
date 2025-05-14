@@ -11,4 +11,4 @@ jobs:
 
     steps:
       - name: Curl your Render server
-        run: curl -s https://event-management-system-li2e.onrender.com > /dev/null
+        run: curl --max-time 20 --connect-timeout 10 -s https://event-management-system-li2e.onrender.com > /dev/null
