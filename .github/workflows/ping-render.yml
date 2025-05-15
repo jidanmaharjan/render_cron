@@ -2,7 +2,7 @@ name: Keep Render Server Awake
 
 on:
   schedule:
-    - cron: "*/10 * * * *"  # Every 10 minutes
+    - cron: "*/8 * * * *"  # Every 10 minutes
   workflow_dispatch:       # Allows manual trigger
 
 jobs:
@@ -23,9 +23,5 @@ jobs:
 
           for url in "${URLs[@]}"; do
             echo "Pinging $url"
-            for i in {1..2}; do
-              curl --max-time 20 --connect-timeout 10 -s "$url" > /dev/null && break
-              echo "Retry $i failed for $url... sleeping 5 seconds"
-              sleep 5
-            done
+              curl --max-time 10 --connect-timeout 5 -s "$url" > /dev/null
           done
