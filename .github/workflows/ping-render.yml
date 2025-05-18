@@ -13,7 +13,6 @@ jobs:
       - name: Ping multiple URLs with timeout and retry
         run: |
           URLs=(
-            "https://removeit-backend.onrender.com"
             "https://event-management-system-li2e.onrender.com"
             "https://genius-lyrics-scrapper.onrender.com"
             "https://gritchat.onrender.com"
