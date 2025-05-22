@@ -1,0 +1,15 @@
+name: Keep Supabase Awake
+
+on:
+  schedule:
+    - cron: "0 2 * * *"  # 2AM everyday
+  workflow_dispatch:       # Allows manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping account page
+        run: curl --max-time 8 --connect-timeout 5 -s "rankbee.vercel.app/account" > /dev/null
+              
