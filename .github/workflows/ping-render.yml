@@ -22,5 +22,5 @@ jobs:
 
           for url in "${URLs[@]}"; do
           echo "Pinging $url"
-          curl --silent --max-time 8 --connect-timeout 5 --output /dev/null "$url"
+          curl --silent --max-time 5 --connect-timeout 3 --output /dev/null "$url"
           done
