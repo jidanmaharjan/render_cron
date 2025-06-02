@@ -14,9 +14,6 @@ jobs:
         run: |
           URLs=(
             "https://event-management-system-li2e.onrender.com"
-            "https://genius-lyrics-scrapper.onrender.com"
-            "https://gritchat.onrender.com"
-            "https://gritquiz.onrender.com"
             "https://meroshop.onrender.com"
           )
 
