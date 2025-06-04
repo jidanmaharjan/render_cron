@@ -11,5 +11,8 @@ jobs:
 
     steps:
       - name: Ping account page
-        run: curl --max-time 8 --connect-timeout 5 -s "rankbee.vercel.app/account" > /dev/null
+        run: |
+              response=$(curl --write-out '%{http_code}' --silent --output /dev/null \
+              --max-time 8 --connect-timeout 5 "https://rankbee.vercel.app/api/awake")
+              echo "Ping response: $response"
               
