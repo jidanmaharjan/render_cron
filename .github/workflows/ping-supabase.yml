@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ping account page
+      - name: Curl awake
         run: |
-              response=$(curl --write-out '%{http_code}' --silent --output /dev/null \
-              --max-time 8 --connect-timeout 5 "https://rankbee.vercel.app/api/awake")
-              echo "Ping response: $response"
+              response=$(curl --silent --show-error --max-time 8 --connect-timeout 5 "https://rankbee.vercel.app/api/awake")
+              echo "Response body:"
+              echo "$response"
               
